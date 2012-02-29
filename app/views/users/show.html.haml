@@ -1,0 +1,29 @@
+.row-fluid
+  .span2
+    %legend User preview
+  .span6
+    %table.table.table-stripped.table-bordered.table-condensed
+      %tr
+        %td.label.label-info Name
+        %td= @user.name
+
+      %tr
+        %td.label.label-info Surname
+        %td= @user.surname
+
+      %tr
+        %td.label.label-info Alias
+        %td= @user.alias
+
+      %tr
+        %td.label.label-info Email
+        %td= @user.email
+
+      %tr
+        %td.label.label-info System role
+        %td= @user.system_role
+
+    .form-actions
+      = link_to "Back", users_path, :class => 'btn'
+      = link_to "Edit", edit_user_path(@user), :class => 'btn'
+      = link_to "Delete", user_path(@user), :method => "delete", :confirm => "#{t("web-app-theme.confirm", :default => "Are you sure?")}", :class => 'btn'

@@ -1,0 +1,8 @@
+.row-fluid
+  .span2
+    %legend Edit user
+  .span6
+    = form_for @user, :url => user_path(@user), :html => { :class => "form-horizontal", :id => "edit_user" } do |f|
+      %fieldset
+        %input{:name => "_method", :type => "hidden", :value =>"put"}
+        = render :partial => "form", :locals => {:f => f}

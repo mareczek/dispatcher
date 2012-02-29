@@ -1,0 +1,34 @@
+%legend
+  Listing users
+  %ul.nav.nav-pills.pull-right
+    %li.dropdown{style: "font-size: 0.5em;"}
+      %a.dropdown-toggle{data: {toggle: 'dropdown'}, href: '#'} Actions
+      %ul.dropdown-menu
+        %li= link_to 'One', '#'
+        %li= link_to 'Two', '#'
+
+%table.table.table-striped.table-condensed.table-bordered
+  %thead
+    %tr
+      %th ID
+      %th Name
+      %th Surname
+      %th Alias
+      %th Email
+      %th Created at
+      %th
+  %tbody
+    - @users.each do |user|
+      %tr
+        %td{width: 20}= user.id
+        %td= link_to user.name, user_path(user)
+        %td= link_to user.surname, user_path(user)
+        %td= link_to user.alias, user_path(user)
+        %td= link_to user.email, user_path(user)
+        %td{width: 160}= user.created_at
+        %td{width: 60}
+          = link_to "", user_path(user), class: 'icon-search', rel: 'tooltip', title: 'Preview'
+          = link_to "", edit_user_path(user), class: 'icon-edit', rel: 'tooltip', title: 'Edit'
+          = link_to "", user_path(user), class: 'icon-remove', rel: 'tooltip', title: 'Remove', :confirm => "#{t("web-app-theme.confirm", :default => "Are you sure?")}", method: :delete
+
+= link_to "New", new_user_path, :class => 'btn btn-primary'

@@ -1,0 +1,39 @@
+= content_tag(:div, class: ["control-group", ("error" unless @user.errors.messages[:name].nil?)]) do
+  = f.label :name, class: "control-label"
+  .controls
+    = f.text_field :name, :class => 'search-query'
+    - @user.errors.messages[:name].each do |msg|
+      %span.help-inline= msg
+
+= content_tag(:div, class: ["control-group", ("error" unless @user.errors.messages[:surname].nil?)]) do
+  = f.label :surname, class: "control-label"
+  .controls
+    = f.text_field :surname, :class => 'search-query'
+    - @user.errors.messages[:surname].each do |msg|
+      %span.help-inline= msg
+
+= content_tag(:div, class: ["control-group", ("error" unless @user.errors.messages[:alias].nil?)]) do
+  = f.label :alias, class: "control-label"
+  .controls
+    = f.text_field :alias, :class => 'search-query'
+    - @user.errors.messages[:alias].each do |msg|
+      %span.help-inline= msg
+
+= content_tag(:div, class: ["control-group", ("error" unless @user.errors.messages[:email].nil?)]) do
+  = f.label :email, class: "control-label"
+  .controls
+    = f.text_field :email, :class => 'search-query'
+    - @user.errors.messages[:email].each do |msg|
+      %span.help-inline= msg
+
+= content_tag(:div, class: ["control-group", ("error" unless @user.errors.messages[:system_role].nil?)]) do
+  = f.label :system_role, class: "control-label"
+  .controls
+    = f.select :system_role, system_roles, { include_blank: true }, {class: 'search-query'}
+    - @user.errors.messages[:system_role].each do |msg|
+      %span.help-inline= msg
+
+.form-actions
+  %button.btn.primary{:type => "submit"} Save
+  or
+  = link_to "Cancel", user_path
